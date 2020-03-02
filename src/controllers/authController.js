@@ -57,19 +57,26 @@ router.post('/autenticate', async (req, res) => {
 })
 
 router.post('/verifica', async (req, res) => {
+  const separa = (vlr)=>{
+    var expr = /[\/]/;
+    var rst = vlr.split(expr);
+    return rst[4]; 
+}
+  
+  var sessao1 = req.body.session;
+    var sessao = separa(sessao1)
+    var telefone = separa(sessao1);
+    const nome = separa(sessao1);
+    const msg = req.body.queryResult.queryText;
+
+    console.log(`Requisição de ${nome}`)
     
 
-    const separa = (vlr)=>{
-        var expr = /[\/]/;
-        var rst = vlr.split(expr);
-        return rst[4]; 
-    }
+   
+
+   // const resposta = await detectIntent(telefone, msg)
     
-    //var sessao = req.params.pN;
-    //const telefone = req.params.pN;
-    //const nome = separa(sessao);
-    //const msg = req.params.pTxt;
-    const { nome, msg, telefone } = req.body;
+    
 
     try{
         if (await User.findOne({ nome })){
@@ -92,7 +99,7 @@ router.post('/verifica', async (req, res) => {
 
 
 })   
-      //  const resposta = await detectIntent(telefone, msg)
+       
         //res.json({"fulfillmentMessages": resposta})
 
     async function detectIntent(telefone, msg) {
