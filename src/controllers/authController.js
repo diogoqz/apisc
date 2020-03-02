@@ -64,11 +64,12 @@ router.post('/verifica', async (req, res) => {
         var rst = vlr.split(expr);
         return rst[4]; 
     }
-    //const { nome, msg, telefone } = req.body;
-    var sessao = req.params.pN;
-    const telefone = req.params.pN;
-    const nome = separa(sessao);
-    const msg = req.params.pTxt;
+    
+    //var sessao = req.params.pN;
+    //const telefone = req.params.pN;
+    //const nome = separa(sessao);
+    //const msg = req.params.pTxt;
+    const { nome, msg, telefone } = req.body;
 
     try{
         if (await User.findOne({ nome })){
