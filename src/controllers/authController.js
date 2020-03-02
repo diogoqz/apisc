@@ -10,10 +10,10 @@ const router = express.Router();
 
 router.post('/add', async (req, res)=>{
 
-    const { nome } = req.body;
+    const { nome, email, telefone } = req.body;
 
     try{
-        if (await User.findOne({ nome }))
+        if (1 == 0)
             return res.status(400).send({ error : 'Usuário já cadastrado'});
         
     const user = await User.create(req.body);
@@ -66,7 +66,7 @@ router.post('/verifica', async (req, res) => {
   var sessao1 = req.body.session;
     var sessao = separa(sessao1)
     var telefone = separa(sessao1);
-    const nome = separa(sessao1);
+    const nome = telefone.replace( "." , "");
     const msg = req.body.queryResult.queryText;
 
     console.log(`Requisição de ${nome}`)
