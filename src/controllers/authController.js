@@ -56,7 +56,7 @@ router.post('/autenticate', async (req, res) => {
     res.send({ user })
 })
 
-router.get('/verifica/:pN/:pTxt', async (req, res) => {
+router.post('/verifica', async (req, res) => {
     
 
     const separa = (vlr)=>{
