@@ -24,6 +24,10 @@ router.post('/add', async (req, res)=>{
         return res.status(400).send({ error : err});
     }
 });
+router.get('/', async (req, res)=>{
+
+  res.send('Olá Mundo')
+});
 
 router.post('/register', async (req, res)=>{
 
